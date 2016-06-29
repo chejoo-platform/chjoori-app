@@ -1,5 +1,5 @@
 (ns ^:figwheel-no-load env.android.main
-  (:require [chjoori-app.android.core :as core]
+  (:require [chjoori-app.core :as core]
             [figwheel.client :as figwheel :include-macros true]))
 
 (enable-console-print!)

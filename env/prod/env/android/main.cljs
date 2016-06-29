@@ -1,4 +1,4 @@
 (ns env.android.main
-  (:require [chjoori-app.android.core :as core]))
+  (:require [chjoori-app.core :as core]))
 
 (core/init)
