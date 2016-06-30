@@ -11,3 +11,4 @@
 (def text (partial create-element (.-Text ReactNative)))
 (def image (partial create-element (.-Image ReactNative)))
 (def touchable-highlight (partial create-element (.-TouchableHighlight ReactNative)))
+(def touchable-opacity (partial create-element (.-TouchableOpacity ReactNative)))

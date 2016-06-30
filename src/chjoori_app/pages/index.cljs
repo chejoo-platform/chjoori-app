@@ -1,12 +1,13 @@
 (ns chjoori-app.pages.index
   (:require-macros [rum.core :refer [defc]])
   (:require [rum.core :as rum]
-            [chjoori-app.widgets.core :refer [view text image touchable-highlight]]
-            [chjoori-app.react-native :refer [alert]]))
+            [chjoori-app.widgets.core :refer [view text image touchable-opacity]]
+            [chjoori-app.react-native :refer [open-url]]))
 
 
 
 (def telegram-logo (js/require "./images/telegram.png"))
+(def telegram-bot-url "https://telegram.me/ChjooriBot?start=register")
 
 (def styles
   {:container {:flexDirection "column"
@@ -19,7 +20,7 @@
    :logo {:width 80
           :height 80
           :marginBottom 30}
-   :button {:backgroundColor "#999"
+   :button {:backgroundColor "#3B5998"
             :padding 10
             :borderRadius 5}
    :button-text {:color "white"
@@ -29,8 +30,8 @@
 (defc AppRoot < rum/cursored-watch [state]
   (view {:style (:container styles)}
         (text {:style (:header styles)} (:greeting @state))
-        (image {:source telegram-logo
-                :style  (:logo styles)})
-        (touchable-highlight {:style (:button styles)
-                              :onPress #(alert "HELLO!")}
-                             (text {:style (:button-text styles)} "press me"))))
+        (touchable-opacity {:activeOpacity 0.01
+                            :onPress #(open-url telegram-bot-url)}
+                           (view {:style (:button styles)}
+                                 (image {:source telegram-logo
+                                         :style  (:logo styles)})))))
