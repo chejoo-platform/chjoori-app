@@ -13,9 +13,9 @@ var config = {
     serverPort: 8081
 };
 
-var React = require('react');
-var ReactNative = require('react-native');
-var WebSocket = require('WebSocket');
+var React = window.React = require('react');
+var ReactNative = window.ReactNative = require('react-native');
+var WebSocket = window.WebSocket = require('WebSocket');
 var self;
 var scriptQueue = [];
 var serverHost = null; // will be set dynamically
