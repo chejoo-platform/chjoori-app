@@ -2,7 +2,7 @@
   (:require-macros [rum.core :refer [defc]])
   (:require [rum.core :as rum]
             [chjoori-app.widgets.core :refer [view text image touchable-opacity]]
-            [chjoori-app.react-native :refer [open-url]]))
+            [chjoori-app.react-native :refer [open-url get-initial-url alert]]))
 
 
 
@@ -27,9 +27,13 @@
                  :textAlign "center"
                  :fontWeight "bold"}})
 
-(defc AppRoot < rum/cursored-watch [state]
+(def initial-url (atom "Unspecified..."))
+(get-initial-url (fn [url] (reset! initial-url url)))
+
+(defc AppRoot < rum/cursored-watch rum/reactive [state]
   (view {:style (:container styles)}
         (text {:style (:header styles)} (:greeting @state))
+        (text {} (rum/react initial-url))
         (touchable-opacity {:activeOpacity 0.01
                             :onPress #(open-url telegram-bot-url)}
                            (view {:style (:button styles)}

@@ -12,3 +12,8 @@
 (defn alert [title] (.alert (.-Alert ReactNative) title))
 
 (defn open-url [url] (.openURL linking url))
+
+(defn get-initial-url
+  ([thenfn] (get-initial-url thenfn #(js/console.error %)))
+  ([thenfn catchfn]
+   (.. linking getInitialURL (then thenfn) (catch catchfn))))
