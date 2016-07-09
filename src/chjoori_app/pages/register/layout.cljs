@@ -1,7 +1,7 @@
-(ns chjoori-app.pages.index
+(ns chjoori-app.pages.register.layout
   (:require [rum.core :as rum]
-            [chjoori-app.widgets.core :refer [view text image touchable-opacity]]
-            [chjoori-app.react-native :refer [open-url]]
+            [react-native.widgets :refer [view text image touchable-opacity]]
+            [react-native.utils :refer [open-url]]
             [chjoori-app.state :refer [initial-url]])
   (:require-macros [rum.core :refer [defc]]))
 

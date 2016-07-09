@@ -1,7 +1,7 @@
 (ns chjoori-app.core
   (:require [re-natal.support :as support]
-            [chjoori-app.pages.index :refer [AppRoot]]
-            [chjoori-app.react-native :refer [register-component]]
+            [chjoori-app.pages.register.layout :refer [AppRoot]]
+            [react-native.utils :refer [register-component]]
             [chjoori-app.state :refer [app-state]]))
 
 

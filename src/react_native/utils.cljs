@@ -1,16 +1,11 @@
-(ns chjoori-app.react-native)
+(ns react-native.utils
+  (:require [react-native.core :refer [app-registry alert linking app-state]]))
 
 
-
-(def React (.-React js/window))
-(def ReactNative (.-ReactNative js/window))
-(def app-registry (.-AppRegistry ReactNative))
-(def app-state (.-AppState ReactNative))
-(def linking (.-Linking ReactNative))
 
 (defn register-component [name f] (.registerComponent app-registry name f))
 
-(defn alert [title] (.alert (.-Alert ReactNative) title))
+(defn alert [title] (.alert alert title))
 
 (defn open-url [url] (.openURL linking url))
 

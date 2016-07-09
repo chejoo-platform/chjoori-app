@@ -1,5 +1,5 @@
 (ns chjoori-app.state
-  (:require [chjoori-app.react-native :refer [get-initial-url app-state-changes]]))
+  (:require [react-native.utils :refer [get-initial-url app-state-changes]]))
 
 
 
