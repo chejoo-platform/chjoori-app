@@ -15,9 +15,10 @@
     (create-class
       #js {:getInitialState (fn []
                               (this-as this
-                                (if-not @root-component
-                                  (reset! root-component this)
-                                  (throw (js/Error. "ASSERTION FAILED: re-natal.support root component mounted more than once.")))))
+                                (if @root-component
+                                  (js/console.log (js/Error. "re-natal.support root component mounted more than once."))
+                                  (reset! root-component this)))
+                              nil)
            :render          (fn [] @mounted-element)})))
 
 (defn mount
