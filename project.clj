@@ -5,7 +5,8 @@
                       :url  "http://www.eclipse.org/legal/epl-v10.html"}
             :dependencies [[org.clojure/clojure "1.9.0-alpha7"]
                            [org.clojure/clojurescript "1.9.89"]
-                           [rum "0.9.1" :exclusions [cljsjs/react cljsjs/react-dom sablono]]]
+                           [rum "0.9.1" :exclusions [cljsjs/react cljsjs/react-dom sablono]]
+                           [org.clojure/core.async "0.2.385"]]
             :plugins [[lein-cljsbuild "1.1.3"]
                       [lein-figwheel "0.5.4-5"]]
             :clean-targets ["target/" "index.ios.js" "index.android.js"]
