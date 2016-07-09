@@ -1,8 +1,9 @@
 (ns chjoori-app.pages.index
-  (:require-macros [rum.core :refer [defc]])
   (:require [rum.core :as rum]
             [chjoori-app.widgets.core :refer [view text image touchable-opacity]]
-            [chjoori-app.react-native :refer [open-url get-initial-url alert]]))
+            [chjoori-app.react-native :refer [open-url]]
+            [chjoori-app.state :refer [initial-url]])
+  (:require-macros [rum.core :refer [defc]]))
 
 
 
@@ -26,9 +27,6 @@
    :button-text {:color "white"
                  :textAlign "center"
                  :fontWeight "bold"}})
-
-(def initial-url (atom "Unspecified..."))
-(get-initial-url (fn [url] (reset! initial-url url)))
 
 (defc AppRoot < rum/cursored-watch rum/reactive [state]
   (view {:style (:container styles)}
