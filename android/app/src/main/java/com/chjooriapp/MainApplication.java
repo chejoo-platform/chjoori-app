@@ -14,22 +14,22 @@ import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
-    private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-            @Override
-            protected boolean getUseDeveloperSupport() {
-                return BuildConfig.DEBUG;
-            }
-
-            @Override
-            protected List<ReactPackage> getPackages() {
-                return Arrays.<ReactPackage>asList(
-                                                   new MainReactPackage()
-                                                   );
-            }
-        };
+  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+    @Override
+    protected boolean getUseDeveloperSupport() {
+      return BuildConfig.DEBUG;
+    }
 
     @Override
-    public ReactNativeHost getReactNativeHost() {
-        return mReactNativeHost;
+    protected List<ReactPackage> getPackages() {
+      return Arrays.<ReactPackage>asList(
+          new MainReactPackage()
+      );
     }
+  };
+
+  @Override
+  public ReactNativeHost getReactNativeHost() {
+      return mReactNativeHost;
+  }
 }
