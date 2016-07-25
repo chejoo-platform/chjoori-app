@@ -12,3 +12,5 @@
  (fn [& _]
    (.. (get-initial-url)
        (then #(reset! initial-url %)))))
+
+(defonce current-route (atom nil))

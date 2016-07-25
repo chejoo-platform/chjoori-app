@@ -2,7 +2,8 @@
   (:require [rum.core :as rum]
             [react-native.widgets :refer [view text image touchable-opacity]]
             [react-native.utils :refer [open-url]]
-            [chjoori-app.state :refer [initial-url]])
+            [chjoori-app.state :refer [current-route]]
+            [widgets.browser-link :refer [browser-link]])
   (:require-macros [rum.core :refer [defc]]))
 
 
@@ -28,12 +29,12 @@
                  :textAlign "center"
                  :fontWeight "bold"}})
 
-(defc AppRoot < rum/cursored-watch rum/reactive [state]
+(defc register-page < rum/cursored-watch rum/reactive []
   (view {:style (:container styles)}
-        (text {:style (:header styles)} (:greeting @state))
-        (text {} (rum/react initial-url))
-        (touchable-opacity {:activeOpacity 0.01
-                            :onPress #(open-url telegram-bot-url)}
-                           (view {:style (:button styles)}
-                                 (image {:source telegram-logo
-                                         :style  (:logo styles)})))))
+        (text {:style (:header styles)} "با تلگرام ثبت نام کنید.")
+        (browser-link {} telegram-bot-url
+                      (view {:style (:button styles)}
+                            (image {:source telegram-logo
+                                    :style  (:logo styles)})))
+        (touchable-opacity {:onPress #(reset! current-route [:list-questions])}
+                           (text {} "Next"))))

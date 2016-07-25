@@ -1,13 +1,14 @@
 (ns chjoori-app.core
   (:require [re-natal.support :as support]
-            [chjoori-app.pages.register.layout :refer [AppRoot]]
-            [react-native.utils :refer [register-component]]
-            [chjoori-app.state :refer [app-state]]))
+            [chjoori-app.root-component :refer [AppRoot]]
+            [chjoori-app.state :refer [current-route]]
+            [react-native.utils :refer [register-component]]))
 
 
 
 (defonce root-component-factory (support/make-root-component-factory))
-(defn mount-app [] (support/mount (AppRoot app-state)))
+(defn mount-app [] (support/mount (AppRoot)))
 (defn init []
+  (reset! current-route [:register])
   (mount-app)
   (register-component "chjooriApp" (fn [] root-component-factory)))
