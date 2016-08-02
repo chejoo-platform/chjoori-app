@@ -1,7 +1,8 @@
 (ns chjoori-app.pages.list-questions.layout
   (:require [rum.core :as rum]
             [react-native.widgets :refer [view text touchable-highlight]]
-            [chjoori-app.state :refer [app-state current-route]])
+            [chjoori-app.state :refer [app-state]]
+            [chjoori-app.routing :as routing])
   (:require-macros [rum.core :refer [defc]]))
 
 
@@ -12,11 +13,11 @@
    :new-button {:backgroundColor "#999"}})
 
 
-(def questions (rum/cursor app-state [:questions]))
+(def questions (rum/cursor-in app-state [:questions]))
 
 
 (defn new-question []
-  (reset! current-route [:new-question]))
+  (routing/push [:new-question]))
 
 
 (defc list-questions-page < rum/reactive []
@@ -25,5 +26,5 @@
                               (text {:style (:new-button styles)}
                                     "ایجاد سوال"))
          (for [q (rum/react questions)]
-           (touchable-highlight {}
+           (touchable-highlight {:onPress #(routing/push [:question (:id q)])}
                                 (text {} (:question q))))))

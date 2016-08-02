@@ -8,3 +8,4 @@
 (def app-state (.-AppState react-native))
 (def linking (.-Linking react-native))
 (def alert (.-Alert react-native))
+(def back-android (.-BackAndroid react-native))
